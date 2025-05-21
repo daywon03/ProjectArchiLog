@@ -1,0 +1,8 @@
+fr/archilog/mediatheque/model/Livre.class
+fr/archilog/mediatheque/exception/ReservationException.class
+fr/archilog/mediatheque/server/ClientHandler.class
+fr/archilog/mediatheque/server/MediathequeServer.class
+fr/archilog/mediatheque/exception/EmpruntException.class
+fr/archilog/mediatheque/model/DVD.class
+fr/archilog/mediatheque/model/Abonne.class
+fr/archilog/mediatheque/model/Document.class

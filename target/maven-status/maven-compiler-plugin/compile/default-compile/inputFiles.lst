@@ -1,0 +1,8 @@
+/Users/damonba/Documents/ArchitectureLogic/ProjectArchiLog/src/main/java/fr/archilog/mediatheque/exception/EmpruntException.java
+/Users/damonba/Documents/ArchitectureLogic/ProjectArchiLog/src/main/java/fr/archilog/mediatheque/exception/ReservationException.java
+/Users/damonba/Documents/ArchitectureLogic/ProjectArchiLog/src/main/java/fr/archilog/mediatheque/model/Abonne.java
+/Users/damonba/Documents/ArchitectureLogic/ProjectArchiLog/src/main/java/fr/archilog/mediatheque/model/DVD.java
+/Users/damonba/Documents/ArchitectureLogic/ProjectArchiLog/src/main/java/fr/archilog/mediatheque/model/Document.java
+/Users/damonba/Documents/ArchitectureLogic/ProjectArchiLog/src/main/java/fr/archilog/mediatheque/model/Livre.java
+/Users/damonba/Documents/ArchitectureLogic/ProjectArchiLog/src/main/java/fr/archilog/mediatheque/server/ClientHandler.java
+/Users/damonba/Documents/ArchitectureLogic/ProjectArchiLog/src/main/java/fr/archilog/mediatheque/server/MediathequeServer.java
