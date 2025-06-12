@@ -22,7 +22,7 @@ public class Livre implements Document {
     }
 
     @Override
-    public void reserver(Abonne ab) throws ReservationException {
+    public synchronized void reserver(Abonne ab) throws ReservationException {
         if (reservePar != null || empruntePar != null) {
             throw new ReservationException("Le livre est déjà réservé ou emprunté");
         }
@@ -30,7 +30,7 @@ public class Livre implements Document {
     }
 
     @Override
-    public void emprunter(Abonne ab) throws EmpruntException {
+    public synchronized void emprunter(Abonne ab) throws EmpruntException {
         if (empruntePar != null) {
             throw new EmpruntException("Le livre est déjà emprunté");
         }
@@ -42,7 +42,7 @@ public class Livre implements Document {
     }
 
     @Override
-    public void retourner() {
+    public synchronized void retourner() {
         empruntePar = null;
         reservePar = null;
     }

@@ -34,9 +34,18 @@ public class ClientHandler implements Runnable {
             int numeroAbonne = Integer.parseInt(in.readLine());
             int numeroDocument = Integer.parseInt(in.readLine());
 
-            // Récupération de l'abonné et du document
-            Abonne abonne = abonnes.get(numeroAbonne);
-            Document document = documents.get(numeroDocument);
+            // Récupération de l'abonné et du document avec synchronisation
+            Document document;
+            Abonne abonne;
+            
+            // Synchronisation sur les maps pour éviter les problèmes de concurrence
+            synchronized(documents) {
+                document = documents.get(numeroDocument);
+            }
+            
+            synchronized(abonnes) {
+                abonne = abonnes.get(numeroAbonne);
+            }
 
             if (abonne == null || document == null) {
                 out.println("Abonné ou document non trouvé");
@@ -44,30 +53,28 @@ public class ClientHandler implements Runnable {
             }
 
             // Traitement selon le service demandé
-                switch (service) {
-                    case "Réservation" -> {
-                        try {
-                            document.reserver(abonne);
-                            out.println("Réservation effectuée avec succès");
-                        } catch (ReservationException e) {
-                            out.println("Erreur de réservation : " + e.getMessage());
-                        }
-                    }
-                    case "Emprunt" -> {
-                        try {
-                            document.emprunter(abonne);
-                            out.println("Emprunt effectué avec succès");
-                        } catch (EmpruntException e) {
-                            out.println("Erreur d'emprunt : " + e.getMessage());
-                        }
-                    }
-                    case "Retour" -> {
-                        document.retourner();
-                        out.println("Retour effectué avec succès");
+            switch (service) {
+                case "Réservation" -> {
+                    try {
+                        document.reserver(abonne);
+                        out.println("Réservation effectuée avec succès");
+                    } catch (ReservationException e) {
+                        out.println("Erreur de réservation : " + e.getMessage());
                     }
                 }
-          
-
+                case "Emprunt" -> {
+                    try {
+                        document.emprunter(abonne);
+                        out.println("Emprunt effectué avec succès");
+                    } catch (EmpruntException e) {
+                        out.println("Erreur d'emprunt : " + e.getMessage());
+                    }
+                }
+                case "Retour" -> {
+                    document.retourner();
+                    out.println("Retour effectué avec succès");
+                }
+            }
         } catch (IOException | NumberFormatException e) {
             System.err.println("Erreur lors du traitement de la requête: " + e.getMessage());
         } finally {

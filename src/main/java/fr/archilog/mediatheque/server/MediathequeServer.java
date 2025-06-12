@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import fr.archilog.mediatheque.model.Abonne;
 import fr.archilog.mediatheque.model.DVD;
@@ -13,16 +13,16 @@ import fr.archilog.mediatheque.model.Document;
 import fr.archilog.mediatheque.model.Livre;
 
 public class MediathequeServer {
-    private static final int PORT_RESERVATION = 2000;
-    private static final int PORT_EMPRUNT = 3000;
-    private static final int PORT_RETOUR = 4000;
+    private static final int PORT_RESERVATION = 3000;
+    private static final int PORT_EMPRUNT = 4000;
+    private static final int PORT_RETOUR = 5000;
 
     private final Map<Integer, Document> documents;
     private final Map<Integer, Abonne> abonnes;
 
     public MediathequeServer() {
-        this.documents = new HashMap<>();
-        this.abonnes = new HashMap<>();
+        this.documents = new ConcurrentHashMap<>();
+        this.abonnes = new ConcurrentHashMap<>();
         initialiserDonnees();
     }
 
