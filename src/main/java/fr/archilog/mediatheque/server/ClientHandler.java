@@ -9,16 +9,16 @@ import java.util.Map;
 
 import fr.archilog.mediatheque.exception.EmpruntException;
 import fr.archilog.mediatheque.exception.ReservationException;
-import fr.archilog.mediatheque.model.Abonne;
 import fr.archilog.mediatheque.model.Document;
+import fr.archilog.mediatheque.model.IAbonne;
 
 public class ClientHandler implements Runnable {
     private final Socket clientSocket;
     private final String service;
     private final Map<Integer, Document> documents;
-    private final Map<Integer, Abonne> abonnes;
+    private final Map<Integer, IAbonne> abonnes;
 
-    public ClientHandler(Socket socket, String service, Map<Integer, Document> documents, Map<Integer, Abonne> abonnes) {
+    public ClientHandler(Socket socket, String service, Map<Integer, Document> documents, Map<Integer, IAbonne> abonnes) {
         this.clientSocket = socket;
         this.service = service;
         this.documents = documents;
@@ -36,7 +36,7 @@ public class ClientHandler implements Runnable {
 
             // Récupération de l'abonné et du document avec synchronisation
             Document document;
-            Abonne abonne;
+            IAbonne abonne;
             
             // Synchronisation sur les maps pour éviter les problèmes de concurrence
             synchronized(documents) {

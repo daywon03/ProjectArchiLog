@@ -7,8 +7,8 @@ public class DVD implements Document {
     private final int numero;
     private final String titre;
     private final boolean adulte;
-    private Abonne reservePar;
-    private Abonne empruntePar;
+    private IAbonne reservePar;
+    private IAbonne empruntePar;
 
     public DVD(int numero, String titre, boolean adulte) {
         this.numero = numero;
@@ -22,7 +22,7 @@ public class DVD implements Document {
     }
 
     @Override
-    public synchronized void reserver(Abonne ab) throws ReservationException {
+    public synchronized void reserver(IAbonne ab) throws ReservationException {
         if (reservePar != null || empruntePar != null) {
             throw new ReservationException("Le DVD est déjà réservé ou emprunté");
         }
@@ -33,7 +33,7 @@ public class DVD implements Document {
     }
 
     @Override
-    public synchronized void emprunter(Abonne ab) throws EmpruntException {
+    public synchronized void emprunter(IAbonne ab) throws EmpruntException {
         if (empruntePar != null) {
             throw new EmpruntException("Le DVD est déjà emprunté");
         }

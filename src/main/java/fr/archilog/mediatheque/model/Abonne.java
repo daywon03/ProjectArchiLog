@@ -2,7 +2,7 @@ package fr.archilog.mediatheque.model;
 
 import java.time.LocalDate;
 
-public class Abonne {
+public class Abonne implements IAbonne {
     private final int numero;
     private final String nom;
     private final LocalDate dateNaissance;

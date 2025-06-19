@@ -10,6 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import fr.archilog.mediatheque.model.Abonne;
 import fr.archilog.mediatheque.model.DVD;
 import fr.archilog.mediatheque.model.Document;
+import fr.archilog.mediatheque.model.IAbonne;
 import fr.archilog.mediatheque.model.Livre;
 
 public class MediathequeServer {
@@ -18,7 +19,7 @@ public class MediathequeServer {
     private static final int PORT_RETOUR = 5000;
 
     private final Map<Integer, Document> documents;
-    private final Map<Integer, Abonne> abonnes;
+    private final Map<Integer, IAbonne> abonnes;
 
     public MediathequeServer() {
         this.documents = new ConcurrentHashMap<>();
